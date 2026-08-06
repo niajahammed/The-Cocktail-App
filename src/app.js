@@ -107,6 +107,12 @@ function showDetails (detail) {
       <p class="mb-6">
         ${detail.strInstructions}
       </p>
+      <p class="mb-6">
+        ${detail.strInstructionsDE}
+      </p>
+      <p class="mb-6">
+        ${detail.strInstructionsES}
+      </p>
       <button class="bg-red-500 text-white py-2 px-4 rounded-xl transition duration-300 ease-in cursor-pointer hover:bg-red-700" onclick="closeDetails()">
         CLOSE
       </button>
