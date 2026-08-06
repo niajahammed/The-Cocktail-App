@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.btn {
+  @apply bg-blue-500 px-4 text-white rounded-xl cursor-pointer transition duration-300 hover:bg-blue-700;
+}
