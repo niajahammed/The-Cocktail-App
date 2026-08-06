@@ -32,7 +32,7 @@ function displayCocktail (cocktailList) {
   cocktailList.forEach ((cocktail) => {
     cardHtml += `
       <div class="px-2 py-3 border border-gray-500 my-3 min-h-[300px] rounded-xl flex flex-col h-full">
-        <img src="${cocktail.strDrinkThumb}" alt="" class="rounded-xl object-cover h-[200px] w-full">
+        <img src="${cocktail.strDrinkThumb}" alt="" class="rounded-xl object-cover aspect-square w-full">
         <h3 class="text-xl text-white my-4">
           ${cocktail.strDrink}
         </h3>
