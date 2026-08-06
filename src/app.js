@@ -1,6 +1,7 @@
 const inputBar = document.getElementById("input-bar");
 const searchBtn = document.getElementById("search-btn");
 const displayContainer = document.getElementById("display-cocktail");
+const details = document.getElementById("details");
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchCocktail();
@@ -38,7 +39,7 @@ function displayCocktail (cocktailList) {
         <p class="text-xl text-gray-300 mb-3">
           ${cocktail.idDrink}
         </p>
-        <button class="btn py-2 px-3 mt-auto">
+        <button class="btn py-2 px-3 mt-auto" onclick="detailsUrl('${cocktail.idDrink}')">
           VIEW DETAILS
         </button>
       </div>
@@ -84,6 +85,38 @@ async function searchByName () {
   } else {
     alert("Please enter a name to search");
   }
+}
+
+function detailsUrl (id) {
+  let URLDetail = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
+
+  fetch(URLDetail)
+            .then((res) => res.json())
+            .then((data) => showDetails(data.drinks[0]));
+}
+
+function showDetails (detail) {
+  details.classList.add("visible");
+  details.classList.remove("invisible");
+
+  details.innerHTML = `
+    <div class="popup bg-white w-[70%] min-h-[500px] p-10">
+      <h2 class="text-2xl font-bold mb-4">
+        ${detail.strDrink}
+      </h2>
+      <p class="mb-6">
+        ${detail.strInstructions}
+      </p>
+      <button class="bg-red-500 text-white py-2 px-4 rounded-xl transition duration-300 ease-in cursor-pointer hover:bg-red-700" onclick="closeDetails()">
+        CLOSE
+      </button>
+    </div>
+  `;
+}
+
+function closeDetails () {
+  details.classList.add("invisible");
+  details.classList.remove("visible")
 }
 
 searchBtn.addEventListener("click", () => {
