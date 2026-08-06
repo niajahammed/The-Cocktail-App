@@ -67,6 +67,26 @@ async function searchByFirstLetter () {
   }
 }
 
+async function searchByName () {
+  const query = inputBar.value;
+
+  if (query) {
+    const nameURL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputBar.value}`;
+
+    try {
+      const res = await fetch(nameURL);
+      const data = await res.json();
+
+      displayCocktail(data.drinks || []);
+    } catch (e) {
+      alert("Failed to search cocktails");
+    }
+  } else {
+    alert("Please enter a name to search");
+  }
+}
+
 searchBtn.addEventListener("click", () => {
   searchByFirstLetter();
+  searchByName();
 });
