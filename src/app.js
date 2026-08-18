@@ -13,7 +13,7 @@ async function fetchCocktail () {
 
     await fetch(URL)
           .then((res) => res.json())
-          .then((data) => displayCocktail(data.drinks.slice(0, 20)));
+          .then((data) => displayCocktail(data.drinks.slice(0, 12)));
   } catch (e) {
     alert("Something went wrong!");
   }
@@ -37,7 +37,7 @@ function displayCocktail (cocktailList) {
           ${cocktail.strDrink}
         </h3>
         <p class="text-xl text-gray-300 mb-3">
-          ${cocktail.idDrink}
+          Id : ${cocktail.idDrink}
         </p>
         <button class="btn py-2 px-3 mt-auto" onclick="detailsUrl('${cocktail.idDrink}')">
           VIEW DETAILS
@@ -85,6 +85,7 @@ async function searchByName () {
   } else {
     alert("Please enter a name to search");
   }
+  inputBar.value = "";
 }
 
 function detailsUrl (id) {
